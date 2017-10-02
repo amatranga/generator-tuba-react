@@ -18,6 +18,7 @@ module.exports = generator.extend({
   },
   writing: {
     config: function() {
+      this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.npmignore'));
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
