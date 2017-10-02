@@ -1,36 +1,60 @@
 'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
+var generator = require('yeoman-generator');
+var chalk = require('chalk');
+var yosay = require('yosay');
 
-module.exports = class extends Generator {
+module.exports = generator.extend({
   prompting() {
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the phenomenal ' + chalk.red('generator-tuba-react') + ' generator!'
-    ));
-
-    const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
+    return this.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Your project name',
+        default: this.name
+      }
+    ]).then(answers => {
+      this.log('app name', answers);
     });
-  }
-
-  writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  }
-
-  install() {
+  },
+  writing: {
+    config: function() {
+      this.fs.copyTpl(
+        this.templatePath('_package.json'),
+        this.destinationPath('package.json'),
+        {
+          name: this.props
+        }
+      );
+      this.fs.copy(
+        this.templatePath('webpack.config.js'),
+        this.destinationPath('webpack.config.js')
+      );
+      this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
+    },
+    app: function() {
+      this.fs.copy(
+        this.templatePath('_server/index.js'),
+        this.destinationPath('server/index.js')
+      );
+      this.fs.copy(
+        this.templatePath('_server/app.js'),
+        this.destinationPath('server/app.js')
+      );
+      this.fs.copy(
+        this.templatePath('_public/index.html'),
+        this.destinationPath('public/index.html')
+      );
+      this.fs.copy(
+        this.templatePath('_client/_src/index.jsx'),
+        this.destinationPath('client/src/index.jsx')
+      );
+      this.fs.copy(
+        this.templatePath('_client/_src/_components/App.jsx'),
+        this.destinationPath('client/src/components/App.jsx')
+      );
+    }
+  },
+  install: function() {
     this.installDependencies();
   }
-};
+});
