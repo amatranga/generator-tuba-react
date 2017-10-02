@@ -5,34 +5,45 @@ var yosay = require('yosay');
 
 module.exports = generator.extend({
   prompting() {
+    this.log(yosay('Welcome to ' + chalk.yellow('generator-tuba-react') + ' generator!'));
     return this.prompt([
       {
         type: 'input',
         name: 'name',
         message: 'Your project name',
-        default: this.name
+        default: this.appname
       }
-    ]).then(answers => {
-      this.log('app name', answers);
-    });
+    ]).then(
+      function(answers) {
+        this.props = answers;
+      }.bind(this)
+    );
   },
   writing: {
-    config: function() {
-      this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.npmignore'));
+    config() {
+      // H this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.npmignore'));
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         {
-          name: this.props
+          name: this.props.name
         }
       );
+      this.fs.copyTpl(
+        this.templatePath('_bower.json'),
+        this.destinationPath('bower.json'),
+        {
+          name: this.props.name
+        }
+      );
+      this.fs.copy(this.templatePath('bowerrc'), this.destinationPath('.bowerrc'));
       this.fs.copy(
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js')
       );
       this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
     },
-    app: function() {
+    app() {
       this.fs.copy(
         this.templatePath('_server/index.js'),
         this.destinationPath('server/index.js')
@@ -55,7 +66,7 @@ module.exports = generator.extend({
       );
     }
   },
-  install: function() {
+  install() {
     this.installDependencies();
   }
 });
