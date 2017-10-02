@@ -1,6 +1,6 @@
 {
   "name": "generator-tuba-react",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description":
     "React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack",
   "homepage": "http://github.com/amatranga/tuba-generator-react",
