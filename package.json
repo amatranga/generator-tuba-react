@@ -1,12 +1,11 @@
 {
   "name": "generator-tuba-react",
-  "version": "1.0.1",
-  "description": "React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack",
+  "version": "1.0.21",
+  "description":
+    "React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack",
   "homepage": "http://github.com/amatranga/tuba-generator-react",
   "author": "amatranga <amatranga892@gmail.com> (github.com/amatranga)",
-  "files": [
-    "generators"
-  ],
+  "files": ["generators"],
   "main": "generators/index.js",
   "keywords": [
     "React",
@@ -31,9 +30,9 @@
     "jest-cli": "^21.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^1.0.0",
     "chalk": "^1.1.3",
-    "yosay": "^2.0.0"
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^2.0.1"
   },
   "jest": {
     "testEnvironment": "node"
@@ -45,20 +44,11 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
   },
   "eslintConfig": {
-    "extends": [
-      "xo",
-      "prettier"
-    ],
+    "extends": ["xo", "prettier"],
     "env": {
       "jest": true,
       "node": true
@@ -72,9 +62,7 @@
         }
       ]
     },
-    "plugins": [
-      "prettier"
-    ]
+    "plugins": ["prettier"]
   },
   "repository": {
     "type": "git",
