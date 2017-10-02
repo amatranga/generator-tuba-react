@@ -21,7 +21,6 @@ module.exports = generator.extend({
   },
   writing: {
     config() {
-      // H this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.npmignore'));
       this.fs.copyTpl(
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
@@ -41,7 +40,7 @@ module.exports = generator.extend({
         this.templatePath('webpack.config.js'),
         this.destinationPath('webpack.config.js')
       );
-      this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
+      this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.gitignore'));
     },
     app() {
       this.fs.copy(
