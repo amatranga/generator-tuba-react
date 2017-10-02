@@ -1,13 +1,9 @@
 {
   "name": "generator-tuba-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack",
-  "homepage": "github.com/amatranga/tuba-generator-react",
-  "author": {
-    "name": "amatranga",
-    "email": "amatranga892@gmail.com",
-    "url": "github.com/amatranga"
-  },
+  "homepage": "http://github.com/amatranga/tuba-generator-react",
+  "author": "amatranga <amatranga892@gmail.com> (github.com/amatranga)",
   "files": [
     "generators"
   ],
@@ -80,6 +76,12 @@
       "prettier"
     ]
   },
-  "repository": "amatranga/generator-tuba-react",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amatranga/generator-tuba-react.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amatranga/generator-tuba-react/issues"
+  }
 }
