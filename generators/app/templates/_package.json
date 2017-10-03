@@ -4,8 +4,7 @@
     "build": "webpack",
     "build:watch": "webpack --watch",
     "start": "node server/index.js",
-    "nodemon": "nodemon server/index.js",
-    "test": "mocha ./client/test/*.spec.js"
+    "nodemon": "nodemon server/index.js"
   },
   "dependencies": {
     "babel": "^6.23.0",
