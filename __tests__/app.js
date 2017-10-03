@@ -6,12 +6,30 @@ var helpers = require('yeoman-test');
 describe('generator-tuba-react:app', () => {
   beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({someAnswer: true});
+      .withPrompts({ someAnswer: true });
   });
-
-  it('creates files', () => {
+  it('creates server files', () => {
+    assert.file(['server/index.js', 'server/app.js']);
+  });
+  it('creates public files', () => {
+    assert.file('public/index.html');
+  });
+  it('creates client files', () => {
     assert.file([
-      'dummyfile.txt'
+      'client/src/index.jsx',
+      'client/src/components/App.jsx'
     ]);
+  });
+  it('creates other root level files', () => {
+    assert.file([
+      'bower.json',
+      'package.json',
+      '.gitignore',
+      '.bowerrc',
+      'webpack.config.js'
+    ]);
+  });
+  it('replaces .npmignore file', () => {
+    assert.noFile('.npmignore');
   });
 });
