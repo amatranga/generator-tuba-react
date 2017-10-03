@@ -60,10 +60,6 @@ module.exports = generator.extend({
         this.destinationPath('client/src/index.jsx')
       );
       this.fs.copy(
-        this.templatePath('_client/_test/App.spec.js'),
-        this.destinationPath('client/test/App.spec.js')
-      );
-      this.fs.copy(
         this.templatePath('_client/_src/_components/App.jsx'),
         this.destinationPath('client/src/components/App.jsx')
       );
