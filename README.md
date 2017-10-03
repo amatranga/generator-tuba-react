@@ -1,5 +1,5 @@
 # generator-tuba-react [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack
+> React generator. Includes React, Express, Bootstrap4, and a lightly configured Webpack. tuba-react will make sure that your have your bases covered.
 
 ## Installation
 
