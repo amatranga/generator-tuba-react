@@ -1,5 +1,6 @@
 {
   "name": "<%= name %>",
+  "version": "<%= version %>",
   "scripts": {
     "build": "webpack",
     "build:watch": "webpack --watch",

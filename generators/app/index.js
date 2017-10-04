@@ -10,8 +10,14 @@ module.exports = generator.extend({
       {
         type: 'input',
         name: 'name',
-        message: 'Your project name',
+        message: 'What would you like to name your project?',
         default: this.appname
+      },
+      {
+        type: 'input',
+        name: 'version',
+        message: 'What version number is your project?',
+        default: '0.0.0'
       }
     ]).then(
       function(answers) {
@@ -25,14 +31,16 @@ module.exports = generator.extend({
         this.templatePath('_package.json'),
         this.destinationPath('package.json'),
         {
-          name: this.props.name
+          name: this.props.name,
+          version: this.props.version
         }
       );
       this.fs.copyTpl(
         this.templatePath('_bower.json'),
         this.destinationPath('bower.json'),
         {
-          name: this.props.name
+          name: this.props.name,
+          version: this.props.version
         }
       );
       this.fs.copy(this.templatePath('bowerrc'), this.destinationPath('.bowerrc'));
@@ -43,17 +51,23 @@ module.exports = generator.extend({
       this.fs.copy(this.templatePath('.npmignore'), this.destinationPath('.gitignore'));
     },
     app() {
-      this.fs.copy(
-        this.templatePath('_server/index.js'),
-        this.destinationPath('server/index.js')
+      this.fs.copyTpl(
+        this.templatePath('_server/index'),
+        this.destinationPath('server/index.js'),
+        {
+          name: this.props.name
+        }
       );
       this.fs.copy(
         this.templatePath('_server/app.js'),
         this.destinationPath('server/app.js')
       );
-      this.fs.copy(
-        this.templatePath('_public/index.html'),
-        this.destinationPath('public/index.html')
+      this.fs.copyTpl(
+        this.templatePath('_public/index'),
+        this.destinationPath('public/index.html'),
+        {
+          name: this.props.name
+        }
       );
       this.fs.copy(
         this.templatePath('_client/_src/index.jsx'),
@@ -62,6 +76,10 @@ module.exports = generator.extend({
       this.fs.copy(
         this.templatePath('_client/_src/_components/App.jsx'),
         this.destinationPath('client/src/components/App.jsx')
+      );
+      this.fs.copy(
+        this.templatePath('_db/index.js'),
+        this.destinationPath('db/index.js')
       );
     }
   },

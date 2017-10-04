@@ -20,6 +20,9 @@ describe('generator-tuba-react:app', () => {
       'client/src/components/App.jsx'
     ]);
   });
+  it('creates db files', () => {
+    assert.file('db/index.js');
+  });
   it('creates other root level files', () => {
     assert.file([
       'bower.json',
