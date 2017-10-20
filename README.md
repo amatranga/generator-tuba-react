@@ -25,7 +25,7 @@ yo tuba-react
 
 ## License
 
-ISC © [amatranga](github.com/amatranga)
+ISC © [amatranga](https://github.com/amatranga)
 
 
 [npm-image]: https://badge.fury.io/js/generator-tuba-react.svg
